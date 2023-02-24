@@ -1,12 +1,14 @@
 {
   "name": "to-do-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start:json": "json-server --watch jsonServer/db.json"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +20,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@ngrx/store": "^13.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -27,13 +30,30 @@
     "@angular/cli": "~13.3.10",
     "@angular/compiler-cli": "~13.3.0",
     "@types/jasmine": "~3.10.0",
+    "@types/jest": "^29.4.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
+    "jest": "^29.4.3",
+    "jest-preset-angular": "^13.0.0",
+    "json-server": "^0.17.2",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.6.2"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "transform": {
+      "^.+\\.spec.ts?$": "ts-jest"
+    }
   }
 }
