@@ -1,25 +1,33 @@
 {
   "list": [
     {
-      "id": 1,
-      "note": "complete project before deadline",
-      "dueDate": "20/04/2023",
-      "creationDate": "23/02/2023",
-      "attachment": "test"
+      "note": "Simple note",
+      "creationDate": "2023-02-25T11:31:30.980Z",
+      "color": "rgba(168, 95, 102, 0.3)",
+      "type": 1,
+      "id": 5,
+      "isComplete": true,
+      "file": []
     },
     {
-      "note": "complete project tommorrow 3deadline",
-      "dueDate": "20/02/2023",
-      "creationDate": "21/02/2023",
-      "attachment": "test2",
-      "id": 2
+      "note": "Due Note",
+      "dueDate": "2023-02-27T18:30:00.000Z",
+      "creationDate": "2023-02-25T19:38:01.031Z",
+      "color": "rgba(113, 244, 49, 0.3)",
+      "type": 2,
+      "file": [],
+      "id": 6,
+      "isComplete": false
     },
     {
-      "note": "complete project tommorrow 3deadline",
-      "dueDate": "20/02/2023",
-      "creationDate": "21/02/2023",
-      "attachment": "test2454",
-      "id": 3
+      "note": "Note with attachment",
+      "dueDate": "2023-02-26T18:30:00.000Z",
+      "creationDate": "2023-02-25T19:38:52.015Z",
+      "color": "rgba(72, 216, 229, 0.3)",
+      "type": 3,
+      "file": [],
+      "id": 7,
+      "isComplete": false
     }
   ]
 }

@@ -1,0 +1,24 @@
+.content-container {
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    .date_container {
+      display: flex;
+    }
+  }
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  .footerBtns {
+    margin: 8px 0 8px 8px;
+  }
+}
+
+.flex-size {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100vw - 260px);
+}

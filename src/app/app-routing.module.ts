@@ -6,7 +6,7 @@ const routes: Routes = [
     path:'', pathMatch:'full', redirectTo:'todolist',
   },
   {
-    path:'todolist', loadChildren: () => import('./toDo/to-do.module').then(m => m.ListModule)
+    path:'todolist', loadChildren: () => import('./toDo/todo.module').then(m => m.ListModule)
   }
 ];
 

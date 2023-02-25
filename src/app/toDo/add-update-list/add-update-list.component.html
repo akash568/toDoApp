@@ -1,0 +1,92 @@
+<!-- Title of dialog box -->
+<h1 mat-dialog-title>Add into To Do list</h1>
+<!-- Content of dialog box -->
+<div class="content-container" mat-dialog-content>
+  <form
+    #listFormRef="ngForm"
+    (ngSubmit)="submitToList()"
+    [formGroup]="listForm"
+  >
+    <!-- Inputs for Note -->
+    <div class="input-wrapper">
+      <!-- Note Input -->
+      <mat-form-field>
+        <mat-label>Note</mat-label>
+        <input formControlName="note" matInput placeholder="To Do Note" />
+        <!-- Err msg -->
+        <mat-error *ngIf="listForm.controls['note'].invalid"
+          >Note is required!</mat-error
+        >
+      </mat-form-field>
+      <!-- Due date Input -->
+      <mat-form-field *ngIf="data.noteType !== 1" appearance="fill">
+        <mat-label>Select due date</mat-label>
+        <div class="date_container">
+          <input formControlName="dueDate" matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
+        </div>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- Err msg -->
+        <mat-error *ngIf="listForm.controls['dueDate'].invalid"
+          >Due date is required!</mat-error
+        >
+      </mat-form-field>
+      <ng-container *ngIf="data.noteType === 3">
+        <input
+          (change)="addFile(fileRef)"
+          multiple="true"
+          #fileRef
+          type="file"
+          hidden="true"
+        />
+        <button
+          type="button"
+          (click)="fileRef.click()"
+          mat-raised-button
+          color="success"
+        >
+          Upload<span style="color:red">&nbsp;*</span>
+        </button>
+        <!-- Err msg -->
+        <mat-error
+          *ngIf="
+            listFormRef.submitted && files.length === 0  
+          "
+          >Attachment is required!</mat-error
+        >
+        <mat-list>
+          <mat-list-item *ngFor="let file of files; let idx = index">
+            <mat-icon matListItemIcon>note</mat-icon>
+            <div class="flex-size" matListItemTitle>{{file.name}}</div>
+            <mat-icon (click)="removeFile(idx, fileRef)">close</mat-icon>
+          </mat-list-item>
+        </mat-list>
+      </ng-container>
+    </div>
+    <!-- Footer -->
+    <div class="footer-wrapper">
+      <!-- Cancel Button -->
+      <button
+        class="footerBtns"
+        type="button"
+        mat-dialog-close
+        mat-raised-button
+        color="warn"
+      >
+        cancel
+      </button>
+      <!-- Insert or Update button -->
+      <button
+        type="submit"
+        class="footerBtns"
+        mat-raised-button
+        color="primary"
+      >
+        {{ !!data?.list ? "Update" : "Add" }}
+      </button>
+    </div>
+  </form>
+</div>

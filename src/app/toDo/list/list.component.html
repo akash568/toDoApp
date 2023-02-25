@@ -1,1 +1,86 @@
-<p>list works!</p>
+<!-- Main Card container -->
+<mat-card class="list-card">
+  <!-- Main header -->
+  <mat-card-header>
+    <!-- Main Title -->
+    <mat-card-title>
+      <h2>To Do List</h2>
+    </mat-card-title>
+    <!-- Add todo list Btn -->
+    <button
+      [matMenuTriggerFor]="toDoMenu"
+      class="add-btn"
+      mat-fab
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <!-- Menu triggerede when clicked on + -->
+    <mat-menu class="todo-menu" #toDoMenu="matMenu">
+      <!-- Add Simple note -->
+      <button mat-menu-item (click)="addToDo(1)">Note</button>
+      <!-- Add note with due date -->
+      <button mat-menu-item (click)="addToDo(2)">Due Note</button>
+      <!-- Add note with due date, attachment -->
+      <button mat-menu-item (click)="addToDo(3)">Note with Attachment</button>
+    </mat-menu>
+  </mat-card-header>
+  <!-- Main card content -->
+  <mat-card-content *ngFor="let toDo of list$ | async" class="list-content">
+    <!-- Sub cards for to do list items -->
+    <mat-card (click)="updateStatus(checkRef, toDo)" [style.backgroundColor]="toDo.color">
+      <mat-card-content class="sub-card">
+        <!-- Checkbox for to do item -->
+        <mat-list-item class="todo-items">
+          <mat-checkbox
+            (click)="$event.preventDefault()"
+            [checked]="toDo.isComplete"
+            [style.text-decoration]="toDo.isComplete || checkRef.checked ? 'line-through' : ''"
+            #checkRef
+            >{{ toDo.note }}</mat-checkbox
+          >
+        </mat-list-item>
+        <!-- Button for options on to do item -->
+        <button
+          mat-icon-button
+          (click)="$event.stopPropagation()"
+          [matMenuTriggerFor]="menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <!-- Manu for to do item -->
+        <mat-menu class="todo-menu" #menu="matMenu">
+          <!-- Btn to View details of item -->
+          <button
+            mat-menu-item
+            matTooltip="View Details"
+            matTooltipPosition="left"
+            (click)="viewDetails(toDo)"
+          >
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+          <!-- Btn to update details of item -->
+          <button
+            mat-menu-item
+            matTooltip="Update"
+            matTooltipPosition="left"
+            (click)="updateToDo(toDo)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- Btn to delete item -->
+          <button
+            mat-menu-item
+            matTooltip="Delete"
+            matTooltipPosition="left"
+            (click)="deleteToDo(toDo)"
+          >
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </mat-menu>
+      </mat-card-content>
+      <!-- Due Date -->
+      <p *ngIf="!!toDo?.dueDate">Due Date: {{toDo.dueDate | date: 'mediumDate'}}</p>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

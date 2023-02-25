@@ -1,0 +1,43 @@
+.list-card {
+  margin: 20px;
+
+  mat-card-header {
+    justify-content: space-between;
+  }
+
+  .list-content {
+    .sub-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .todo-items {
+        align-self: center;
+        &::ng-deep .mat-checkbox-label {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: calc(100vw - 190px);
+        }
+      }
+    }
+  }
+
+  .add-btn {
+    width: 2rem;
+    height: 2rem;
+    &::ng-deep .mat-button-wrapper {
+      padding: 0;
+      .mat-icon {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
+::ng-deep .todo-menu.mat-menu-panel {
+  min-width: unset;
+
+  .mat-menu-item .mat-icon {
+    margin-right: 0;
+  }
+}

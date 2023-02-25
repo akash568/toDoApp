@@ -1,0 +1,22 @@
+.detailsBtn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fileDetail-wrapper {
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.v-align-bottom {
+  vertical-align: bottom;
+}
+
+.name-wrapper {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 40vw;
+}
