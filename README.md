@@ -21,3 +21,18 @@ This contains various features such as,
 
 - Run `npm run test` - this will run all test cases
 - Run `npm run test:watch` - this will run test cases with watch mode
+
+# Project Structure
+
+- app (App module)
+    - models (Interfaces)
+    - services (Root services)
+    - shared (Shared module)
+    - store (Root store)
+    - toDo (ToDo module)
+        - add-update-list (Add or update lists)
+        - list (Main list comopnent)
+        - list-detail (Shows list details where user can download attachments)
+        - models (Interfaces)
+        - state (Feature store for toDo module)
+    - utility ( Any static functions that could be reused )
