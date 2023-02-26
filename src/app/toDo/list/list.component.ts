@@ -98,7 +98,7 @@ export class ListComponent implements OnInit {
    * @param checkRef MatCheckbox refrence
    * @param listItem list item details
    */
-  updateStatus(checkRef: MatCheckbox, listItem: List) {
+  public updateStatus(checkRef: MatCheckbox, listItem: List) {
     checkRef.toggle();
 
     this.store.dispatch(

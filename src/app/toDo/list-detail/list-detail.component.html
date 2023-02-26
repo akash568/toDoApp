@@ -1,15 +1,15 @@
 <!-- Title of popup -->
 <h1 mat-dialog-title>list details</h1>
 <!-- Note details -->
-<p>Note: {{ data.list.note }}</p>
+<p id="note-details">Note: {{ data.list.note }}</p>
 <!-- Start Date details -->
-<p>Start Date: {{data.list.creationDate | date: 'mediumDate'}}</p>
+<p id="start-details">Start Date: {{data.list.creationDate | date: 'mediumDate'}}</p>
 <!-- Due Date details -->
-<p *ngIf="data.list.type !== 1">Due Date: {{data.list.dueDate | date: 'mediumDate'}}</p>
+<p id="due-details" *ngIf="data.list.type !== 1">Due Date: {{data.list.dueDate | date: 'mediumDate'}}</p>
 <!-- Attachment details -->
-<div class="fileDetail-wrapper" *ngFor="let file of data.list.file">
-  <div class="name-wrapper" matListItemTitle><mat-icon class="v-align-bottom" matListItemIcon>note</mat-icon>{{ file.name }}</div>
-  <mat-icon matTooltip="Download" matTooltipPosition="above" (click)="downloadFile(file)">cloud_download</mat-icon>
+<div class="fileDetail-wrapper" *ngFor="let file of data.list.file; let i = index">
+  <div id="fname{{i}}" class="name-wrapper" matListItemTitle><mat-icon class="v-align-bottom" matListItemIcon>note</mat-icon>{{ file.name }}</div>
+  <mat-icon id="fdownload{{i}}" matTooltip="Download" matTooltipPosition="above" (click)="downloadFile(file)">cloud_download</mat-icon>
 </div>
 <!-- Close popup -->
 <div class="detailsBtn-wrapper">

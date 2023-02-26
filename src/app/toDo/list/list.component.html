@@ -3,7 +3,7 @@
   <!-- Main header -->
   <mat-card-header>
     <!-- Main Title -->
-    <mat-card-title>
+    <mat-card-title id="list-title">
       <h2>To Do List</h2>
     </mat-card-title>
     <!-- Add todo list Btn -->
@@ -16,25 +16,26 @@
       <mat-icon>add</mat-icon>
     </button>
     <!-- Menu triggerede when clicked on + -->
-    <mat-menu class="todo-menu" #toDoMenu="matMenu">
+    <mat-menu id="note-menu" class="todo-menu" #toDoMenu="matMenu">
       <!-- Add Simple note -->
-      <button mat-menu-item (click)="addToDo(1)">Note</button>
+      <button id="simple-note" mat-menu-item (click)="addToDo(1)">Note</button>
       <!-- Add note with due date -->
-      <button mat-menu-item (click)="addToDo(2)">Due Note</button>
+      <button id="due-note" mat-menu-item (click)="addToDo(2)">Due Note</button>
       <!-- Add note with due date, attachment -->
-      <button mat-menu-item (click)="addToDo(3)">Note with Attachment</button>
+      <button id="attachment-note" mat-menu-item (click)="addToDo(3)">Note with Attachment</button>
     </mat-menu>
   </mat-card-header>
   <!-- Main card content -->
-  <mat-card-content *ngFor="let toDo of list$ | async" class="list-content">
+  <mat-card-content *ngFor="let toDo of list$ | async; let idx = index" class="list-content">
     <!-- Sub cards for to do list items -->
-    <mat-card (click)="updateStatus(checkRef, toDo)" [style.backgroundColor]="toDo.color">
+    <mat-card id="card{{idx}}" (click)="updateStatus(checkRef, toDo)" [style.backgroundColor]="toDo.color">
       <mat-card-content class="sub-card">
         <!-- Checkbox for to do item -->
         <mat-list-item class="todo-items">
           <mat-checkbox
             (click)="$event.preventDefault()"
             [checked]="toDo.isComplete"
+            id="note-status"
             [style.text-decoration]="toDo.isComplete || checkRef.checked ? 'line-through' : ''"
             #checkRef
             >{{ toDo.note }}</mat-checkbox

@@ -10,19 +10,19 @@
     <!-- Inputs for Note -->
     <div class="input-wrapper">
       <!-- Note Input -->
-      <mat-form-field>
-        <mat-label>Note</mat-label>
-        <input formControlName="note" matInput placeholder="To Do Note" />
+      <mat-form-field id="note-field">
+        <mat-label id="note-lable">Note</mat-label>
+        <input id="note-input" formControlName="note" matInput placeholder="To Do Note" />
         <!-- Err msg -->
         <mat-error *ngIf="listForm.controls['note'].invalid"
           >Note is required!</mat-error
         >
       </mat-form-field>
       <!-- Due date Input -->
-      <mat-form-field *ngIf="data.noteType !== 1" appearance="fill">
-        <mat-label>Select due date</mat-label>
+      <mat-form-field id="due-field" *ngIf="data.noteType !== 1" appearance="fill">
+        <mat-label id="due-lable">Select due date</mat-label>
         <div class="date_container">
-          <input formControlName="dueDate" matInput [matDatepicker]="picker" />
+          <input id="due-input" formControlName="dueDate" matInput [matDatepicker]="picker" />
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
@@ -34,6 +34,7 @@
           >Due date is required!</mat-error
         >
       </mat-form-field>
+      <!-- Attachment Template -->
       <ng-container *ngIf="data.noteType === 3">
         <input
           (change)="addFile(fileRef)"
@@ -44,6 +45,7 @@
         />
         <button
           type="button"
+          id="upload-btn"
           (click)="fileRef.click()"
           mat-raised-button
           color="success"
@@ -52,6 +54,7 @@
         </button>
         <!-- Err msg -->
         <mat-error
+          id="upload-err"
           *ngIf="
             listFormRef.submitted && files.length === 0  
           "
@@ -60,8 +63,8 @@
         <mat-list>
           <mat-list-item *ngFor="let file of files; let idx = index">
             <mat-icon matListItemIcon>note</mat-icon>
-            <div class="flex-size" matListItemTitle>{{file.name}}</div>
-            <mat-icon (click)="removeFile(idx, fileRef)">close</mat-icon>
+            <div id="fname{{idx}}" class="flex-size" matListItemTitle>{{file.name}}</div>
+            <mat-icon id="fremove{{idx}}" (click)="removeFile(idx, fileRef)">close</mat-icon>
           </mat-list-item>
         </mat-list>
       </ng-container>
@@ -72,6 +75,7 @@
       <button
         class="footerBtns"
         type="button"
+        id="close-btn"
         mat-dialog-close
         mat-raised-button
         color="warn"
@@ -82,6 +86,7 @@
       <button
         type="submit"
         class="footerBtns"
+        id="submit-btn"
         mat-raised-button
         color="primary"
       >
