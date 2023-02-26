@@ -1,4 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { mockListData } from '../../shared/mock/mocklist';
 
 import { ListDetailComponent } from './list-detail.component';
 
@@ -8,9 +14,18 @@ describe('ListDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [ListDetailComponent],
+      imports: [MatDialogModule],
+      providers: [
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {
+            ...mockListData,
+          },
+        },
+        { provide: MatDialogRef, useValue: {} },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

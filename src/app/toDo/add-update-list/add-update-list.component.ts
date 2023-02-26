@@ -2,12 +2,12 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { FormService } from 'src/app/services/form.service';
+import { FormService } from '../../services/form.service';
 import { List, processedFile } from '../models/todo.model';
 import { addList, updateList } from '../state/list.actions';
 import { ListState } from '../state/list.state';
 import { MatDialogRef } from '@angular/material/dialog';
-import { getRandomColor } from 'src/app/utility/color-randomizer';
+import { getRandomColor } from '../../utility/color-randomizer';
 
 /**
  * Add or update todo list

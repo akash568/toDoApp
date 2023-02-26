@@ -1,4 +1,7 @@
+<!-- Loader -->
 <div *ngIf="isLoading$ | async" class="loader-container">
     <mat-spinner class="loader"></mat-spinner>
 </div>
+<!-- Render components as per routes -->
+<!-- Note: Hidden is used to not re render whole components -->
 <router-outlet [hidden]="isLoading$ | async"></router-outlet>

@@ -30,10 +30,10 @@ export class ListsEffects {
     return this.actions$.pipe(
       ofType(loadLists),
       mergeMap((action) => {
-        this.store.dispatch(setLoadingSpinner({status: true}));
+        this.store.dispatch(setLoadingSpinner({status: true})); // show loader before API call
         return this.listsService.getLists().pipe(
           map((lists) => {
-            this.store.dispatch(setLoadingSpinner({status: false}));
+            this.store.dispatch(setLoadingSpinner({status: false})); // dismiss loader after successful API call
             return loadListsSuccess({ list: lists });
           })
         );
