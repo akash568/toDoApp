@@ -1,6 +1,7 @@
 <!-- Progress bar -->
 <mat-progress-bar
   *ngIf="isLoading$ | async"
+  class="progress-bar"
   [color]="'primary'"
   [mode]="'query'"
   [value]="50"
