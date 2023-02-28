@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppReducer } from './store/app.reducer';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppRoutingModule,
     StoreModule.forRoot({ app: AppReducer }),
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     HttpClientModule,
     BrowserAnimationsModule,
     EffectsModule.forRoot([]),

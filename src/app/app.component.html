@@ -1,7 +1,12 @@
-<!-- Loader -->
-<div *ngIf="isLoading$ | async" class="loader-container">
-    <mat-spinner class="loader"></mat-spinner>
-</div>
+<!-- Progress bar -->
+<mat-progress-bar
+  *ngIf="isLoading$ | async"
+  [color]="'primary'"
+  [mode]="'query'"
+  [value]="50"
+  [bufferValue]="75"
+>
+</mat-progress-bar>
 <!-- Render components as per routes -->
 <!-- Note: Hidden is used to not re render whole components -->
 <router-outlet [hidden]="isLoading$ | async"></router-outlet>
