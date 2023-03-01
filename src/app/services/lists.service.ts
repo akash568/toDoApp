@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { List } from '../toDo/models/todo.model';
 
 const API_URL = 'http://localhost:3000/list';
@@ -22,11 +21,7 @@ export class ListsService {
    * @returns {Observable<List[]>} All ToDo List
    */
   getLists(): Observable<List[]> {
-    return this.http.get<List[]>(API_URL).pipe(
-      map((data) => {
-        return data;
-      })
-    );
+    return this.http.get<List[]>(API_URL);
   }
 
   /**

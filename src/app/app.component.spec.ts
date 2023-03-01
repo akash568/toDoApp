@@ -6,7 +6,7 @@ import { AppReducer } from './store/app.reducer';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { getLoading } from './store/app.selectors';
 import { By } from '@angular/platform-browser';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 describe('AppComponent', () => {
   let store: MockStore;
@@ -19,7 +19,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         StoreModule.forRoot({app: AppReducer}),
-        MatProgressSpinnerModule
+        MatProgressBarModule
       ],
       declarations: [
         AppComponent
@@ -42,16 +42,16 @@ describe('AppComponent', () => {
   });
 
   // Test case 2
-  it('loader should be visible if state is true', () => {
+  it('progress bar should be visible if state is true', () => {
     store.overrideSelector(getLoading, true);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('div.loader-container'))).toBeTruthy();
+    expect(fixture.debugElement.query(By.css('mat-progress-bar.progress-bar'))).toBeTruthy();
   });
 
   // Test case 3
-  it('loader should not be visible if state is false', () => {
+  it('progress bar should not be visible if state is false', () => {
     store.overrideSelector(getLoading, false);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('div.loader-container'))).toBeFalsy();
+    expect(fixture.debugElement.query(By.css('mat-progress-bar.progress-bar'))).toBeFalsy();
   })
 });

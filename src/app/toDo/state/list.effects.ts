@@ -1,4 +1,4 @@
-import { map, mergeMap, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import {
   addList,
   addListSuccess,
@@ -29,7 +29,7 @@ export class ListsEffects {
   loadLists$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loadLists),
-      mergeMap((action) => {
+      switchMap((action) => {
         this.store.dispatch(setLoadingSpinner({status: true})); // show loader before API call
         return this.listsService.getLists().pipe(
           map((lists) => {
@@ -47,7 +47,7 @@ export class ListsEffects {
   addList$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(addList),
-      mergeMap((action) => {
+      switchMap((action) => {
         this.store.dispatch(setLoadingSpinner({status: true}));
         return this.listsService.addList(action.list).pipe(
           map((data) => {

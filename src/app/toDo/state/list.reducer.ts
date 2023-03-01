@@ -5,10 +5,10 @@ import {
   deleteListSuccess,
 } from './list.actions';
 import { createReducer, on } from '@ngrx/store';
-import { initialState, ListState } from './list.state';
+import { initialState } from './list.state';
 
 // Creates reducer
-const _listsReducer = createReducer(
+export const listsReducer = createReducer(
   initialState,
   // Add new list in store
   on(addListSuccess, (state, action) => {
@@ -50,8 +50,3 @@ const _listsReducer = createReducer(
     };
   })
 );
-
-// Exports a reducer function to generate store from module
-export function listsReducer(state: ListState, action: any) {
-  return _listsReducer(state, action);
-}
