@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@main
       - name: Install Dependencies
         run: npm install
-      - name: Build
-        run: npm run tests
+      - name: Test
+        run: npm run test
   build:
     name: Build
     needs: test
