@@ -1,3 +1,5 @@
+# To Do List App ![Firebase CI](https://github.com/akash568/toDoApp/actions/workflows/main.yml/badge.svg?branch=main)
+
 # Specifications
 
 Node Version : 14.21.2
