@@ -151,7 +151,7 @@ export class AddUpdateListComponent implements OnInit {
    * @remarks This will call API only if user updated data in form
    * @returns {void} Void
    */
-  public submitToList() {
+  public submitToList(): void {
     if (this.listForm.invalid || this.data.noteType === 3 && this.files.length === 0) {
       return;
     }
